@@ -17,7 +17,7 @@ We recommend using a dependency injection container, and typehint against [PSR-1
 Install this library using composer:
 
 ```bash
-$ composer require helderjs/doctrine-mongo-odm
+$ composer require yurigobatto/doctrine-mongo-odm
 ```
 
 ## Configuration
