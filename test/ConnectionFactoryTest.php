@@ -6,23 +6,27 @@
  * @copyright @copyright Copyright (c) 2016 Helder Santana
  * @license   https://github.com/helderjs/doctrine-mongo-odm/blob/master/LICENSE MIT License
  */
-namespace Helderjs\Test\Component\DoctrineMongoODM;
+namespace YuriGobatto\Test\Component\DoctrineMongoODM;
 
 use Doctrine\MongoDB\Connection;
 use Doctrine\ODM\MongoDB\Configuration;
-use Helderjs\Component\DoctrineMongoODM\ConnectionFactory;
-use Helderjs\Component\DoctrineMongoODM\Exception\InvalidConfigException;
+use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
+use YuriGobatto\Component\DoctrineMongoODM\ConnectionFactory;
+use YuriGobatto\Component\DoctrineMongoODM\Exception\InvalidConfigException;
 use MongoDB\Client;
 use Psr\Container\ContainerInterface;
 
-class ConnectionFactoryTest extends \PHPUnit_Framework_TestCase
+class ConnectionFactoryTest extends TestCase
 {
+    use ProphecyTrait;
+
     /**
      * @var ContainerInterface
      */
     private $container;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->container = $this->prophesize(ContainerInterface::class);
     }

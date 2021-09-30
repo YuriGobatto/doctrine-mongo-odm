@@ -6,26 +6,32 @@
  * @copyright @copyright Copyright (c) 2016 Helder Santana
  * @license   https://github.com/helderjs/doctrine-mongo-odm/blob/master/LICENSE MIT License
  */
-namespace Helderjs\Test\Component\DoctrineMongoODM;
+namespace YuriGobatto\Test\Component\DoctrineMongoODM;
 
 use Doctrine\Common\EventManager;
-use Doctrine\MongoDB\Connection;
+use MongoDB\Client;
 use Doctrine\ODM\MongoDB\Configuration;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Doctrine\ODM\MongoDB\Mapping\ClassMetadataFactory;
 use Doctrine\ODM\MongoDB\Repository\DefaultRepositoryFactory;
-use Helderjs\Component\DoctrineMongoODM\DocumentManagerFactory;
-use Helderjs\Component\DoctrineMongoODM\Exception\InvalidConfigException;
+use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
+use ProxyManager\Configuration as ProxyManagerConfiguration;
+use ProxyManager\Factory\LazyLoadingGhostFactory;
+use YuriGobatto\Component\DoctrineMongoODM\DocumentManagerFactory;
+use YuriGobatto\Component\DoctrineMongoODM\Exception\InvalidConfigException;
 use Psr\Container\ContainerInterface;
 
-class DocumentManagerFactoryTest extends \PHPUnit_Framework_TestCase
+class DocumentManagerFactoryTest extends TestCase
 {
+    use ProphecyTrait;
+
     /**
      * @var ContainerInterface
      */
     private $container;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->container = $this->prophesize(ContainerInterface::class);
     }
@@ -58,7 +64,7 @@ class DocumentManagerFactoryTest extends \PHPUnit_Framework_TestCase
             'doctrine' => [
                 'documentmanager' => [
                     'odm_default' => [
-                        'connection'    => Connection::class,
+                        'connection'    => Client::class,
                         'configuration' => Configuration::class,
                         'eventmanager'  => EventManager::class,
                     ],
@@ -66,24 +72,29 @@ class DocumentManagerFactoryTest extends \PHPUnit_Framework_TestCase
             ],
         ];
 
-        $connection = $this->prophesize(Connection::class);
+        $connection = $this->createMock(Client::class);
         $configuration = $this->prophesize(Configuration::class);
         $eventManager = $this->prophesize(EventManager::class);
 
+        $connection->method('getTypeMap')
+            ->willReturn(DocumentManager::CLIENT_TYPEMAP);
+
         $configuration->getClassMetadataFactoryName()->willReturn(ClassMetadataFactory::class);
         $configuration->getMetadataCacheImpl()->willReturn(null);
-        $configuration->getRepositoryFactory()->willReturn(DefaultRepositoryFactory::class);
+        $configuration->getRepositoryFactory()->willReturn(new DefaultRepositoryFactory());
         $configuration->getHydratorDir()->willReturn('/tmp/hydrator');
         $configuration->getHydratorNamespace()->willReturn('\Hydarator');
         $configuration->getAutoGenerateHydratorClasses()->willReturn(false);
         $configuration->getProxyDir()->willReturn('/tmp/proxy');
         $configuration->getProxyNamespace()->willReturn('\Proxy');
         $configuration->getAutoGenerateProxyClasses()->willReturn(false);
+        $configuration->buildGhostObjectFactory()
+            ->willReturn(new LazyLoadingGhostFactory(new ProxyManagerConfiguration()));
 
         $this->container->has('doctrine')->willReturn(false);
         $this->container->has('config')->willReturn(true);
         $this->container->get('config')->willReturn($options);
-        $this->container->get(Connection::class)->willReturn($connection->reveal());
+        $this->container->get(Client::class)->willReturn($connection);
         $this->container->get(Configuration::class)->willReturn($configuration->reveal());
         $this->container->get(EventManager::class)->willReturn($eventManager->reveal());
 

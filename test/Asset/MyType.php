@@ -13,7 +13,7 @@ class MyType extends Type
         return new \DateTime('@' . $value->sec);
     }
 
-    public function closureToPHP()
+    public function closureToPHP(): string
     {
         // Return the string body of a PHP closure that will receive $value
         // and store the result of a conversion in a $return variable

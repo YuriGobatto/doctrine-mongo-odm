@@ -6,16 +6,16 @@
  * @copyright @copyright Copyright (c) 2016 Helder Santana
  * @license   https://github.com/helderjs/doctrine-mongo-odm/blob/master/LICENSE MIT License
  */
-namespace Helderjs\Component\DoctrineMongoODM;
+namespace YuriGobatto\Component\DoctrineMongoODM;
 
 use Doctrine\ODM\MongoDB\Mapping\Driver\AnnotationDriver;
-use Helderjs\Component\DoctrineMongoODM\Exception\InvalidConfigException;
+use YuriGobatto\Component\DoctrineMongoODM\Exception\InvalidConfigException;
 use Psr\Container\ContainerInterface;
 
 /**
  * Class AnnotationDriverFactory
  *
- * @package Helderjs\Component\DoctrineMongoODM
+ * @package YuriGobatto\Component\DoctrineMongoODM
  */
 class AnnotationDriverFactory extends AbstractFactory
 {

@@ -1,5 +1,5 @@
 {
-  "name": "helderjs/doctrine-mongo-odm",
+  "name": "yurigobatto/doctrine-mongo-odm",
   "description": "DoctrineMongoODM component for (Micro-)Framework",
   "type": "library",
   "license": "MIT",
@@ -15,27 +15,29 @@
   ],
   "authors": [
     {
-      "name": "Helder Santana",
-      "email": "contato@heldersantana.net"
+      "name": "Yuri Gobatto",
+      "email": "yurigobatto@gmail.com"
     }
   ],
   "require": {
-    "php": "^7.2",
-    "psr/container": "^1.0",
-    "doctrine/mongodb-odm": "^2.0"
+    "php": "^7.2 || ^8.0",
+    "psr/container": "^2.0.1",
+    "doctrine/mongodb-odm": "^2.2.2"
   },
   "require-dev": {
-    "phpunit/phpunit": "^4.8 || ^5.7",
-    "squizlabs/php_codesniffer": "^2.7"
+    "phpunit/phpunit": "^9.5.10",
+    "squizlabs/php_codesniffer": "^3.6.0",
+    "phpspec/prophecy": "^1.10.3",
+    "phpspec/prophecy-phpunit": "^2.0"
   },
   "autoload": {
     "psr-4": {
-      "Helderjs\\Component\\DoctrineMongoODM\\": "src/"
+      "YuriGobatto\\Component\\DoctrineMongoODM\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Helderjs\\Test\\Component\\DoctrineMongoODM\\": "test/"
+      "YuriGobatto\\Test\\Component\\DoctrineMongoODM\\": "test/"
     }
   },
   "extra": {
@@ -48,7 +50,7 @@
       "@cs",
       "@test"
     ],
-    "cs": "vendor/bin/phpcs",
-    "test": "vendor/bin/phpunit"
+    "cs": "phpcs",
+    "test": "phpunit"
   }
 }

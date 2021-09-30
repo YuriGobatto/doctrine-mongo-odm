@@ -6,21 +6,25 @@
  * @copyright @copyright Copyright (c) 2016 Helder Santana
  * @license   https://github.com/helderjs/doctrine-mongo-odm/blob/master/LICENSE MIT License
  */
-namespace Helderjs\Test\Component\DoctrineMongoODM;
+namespace YuriGobatto\Test\Component\DoctrineMongoODM;
 
 use Doctrine\ODM\MongoDB\Mapping\Driver\XmlDriver;
-use Helderjs\Component\DoctrineMongoODM\Exception\InvalidConfigException;
-use Helderjs\Component\DoctrineMongoODM\XmlDriverFactory;
+use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
+use YuriGobatto\Component\DoctrineMongoODM\Exception\InvalidConfigException;
+use YuriGobatto\Component\DoctrineMongoODM\XmlDriverFactory;
 use Psr\Container\ContainerInterface;
 
-class XmlDriverFactoryTest extends \PHPUnit_Framework_TestCase
+class XmlDriverFactoryTest extends TestCase
 {
+    use ProphecyTrait;
+
     /**
      * @var ContainerInterface
      */
     private $container;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->container = $this->prophesize(ContainerInterface::class);
     }

@@ -6,17 +6,17 @@
  * @copyright @copyright Copyright (c) 2016 Helder Santana
  * @license   https://github.com/helderjs/doctrine-mongo-odm/blob/master/LICENSE MIT License
  */
-namespace Helderjs\Component\DoctrineMongoODM;
+namespace YuriGobatto\Component\DoctrineMongoODM;
 
 use Doctrine\Common\EventManager;
 use Doctrine\Common\EventSubscriber;
-use Helderjs\Component\DoctrineMongoODM\Exception\InvalidConfigException;
+use YuriGobatto\Component\DoctrineMongoODM\Exception\InvalidConfigException;
 use Psr\Container\ContainerInterface;
 
 /**
  * Class EventManagerFactory
  *
- * @package Helderjs\Component\DoctrineMongoODM
+ * @package YuriGobatto\Component\DoctrineMongoODM
  */
 class EventManagerFactory extends AbstractFactory
 {
