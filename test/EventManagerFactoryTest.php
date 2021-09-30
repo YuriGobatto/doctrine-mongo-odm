@@ -6,16 +6,16 @@
  * @copyright @copyright Copyright (c) 2016 Helder Santana
  * @license   https://github.com/helderjs/doctrine-mongo-odm/blob/master/LICENSE MIT License
  */
-namespace YuriGobatto\Test\Component\DoctrineMongoODM;
+namespace Helderjs\Test\Component\DoctrineMongoODM;
 
 use Doctrine\Common\EventManager;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
-use YuriGobatto\Component\DoctrineMongoODM\EventManagerFactory;
-use YuriGobatto\Component\DoctrineMongoODM\Exception\InvalidConfigException;
-use YuriGobatto\Test\Component\DoctrineMongoODM\Asset\TestEventSubscriber;
-use YuriGobatto\Test\Component\DoctrineMongoODM\Asset\TestEventSubscriber2;
-use YuriGobatto\Test\Component\DoctrineMongoODM\Asset\TestEventSubscriber3;
+use Helderjs\Component\DoctrineMongoODM\EventManagerFactory;
+use Helderjs\Component\DoctrineMongoODM\Exception\InvalidConfigException;
+use Helderjs\Test\Component\DoctrineMongoODM\Asset\TestEventSubscriber;
+use Helderjs\Test\Component\DoctrineMongoODM\Asset\TestEventSubscriber2;
+use Helderjs\Test\Component\DoctrineMongoODM\Asset\TestEventSubscriber3;
 use Psr\Container\ContainerInterface;
 
 class EventManagerFactoryTest extends TestCase

@@ -1,6 +1,6 @@
 <?php
 
-namespace YuriGobatto\Test\Component\DoctrineMongoODM\Asset;
+namespace Helderjs\Test\Component\DoctrineMongoODM\Asset;
 
 use Doctrine\Common\EventSubscriber;
 

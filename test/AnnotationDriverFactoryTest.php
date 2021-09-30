@@ -6,13 +6,13 @@
  * @copyright @copyright Copyright (c) 2016 Helder Santana
  * @license   https://github.com/helderjs/doctrine-mongo-odm/blob/master/LICENSE MIT License
  */
-namespace YuriGobatto\Test\Component\DoctrineMongoODM;
+namespace Helderjs\Test\Component\DoctrineMongoODM;
 
 use Doctrine\ODM\MongoDB\Mapping\Driver\AnnotationDriver;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
-use YuriGobatto\Component\DoctrineMongoODM\AnnotationDriverFactory;
-use YuriGobatto\Component\DoctrineMongoODM\Exception\InvalidConfigException;
+use Helderjs\Component\DoctrineMongoODM\AnnotationDriverFactory;
+use Helderjs\Component\DoctrineMongoODM\Exception\InvalidConfigException;
 use Psr\Container\ContainerInterface;
 
 class AnnotationDriverFactoryTest extends TestCase

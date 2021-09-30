@@ -6,18 +6,18 @@
  * @copyright @copyright Copyright (c) 2016 Helder Santana
  * @license   https://github.com/helderjs/doctrine-mongo-odm/blob/master/LICENSE MIT License
  */
-namespace YuriGobatto\Component\DoctrineMongoODM;
+namespace Helderjs\Component\DoctrineMongoODM;
 
 use Doctrine\MongoDB\Connection;
 use Doctrine\ODM\MongoDB\Configuration;
-use YuriGobatto\Component\DoctrineMongoODM\Exception\InvalidConfigException;
+use Helderjs\Component\DoctrineMongoODM\Exception\InvalidConfigException;
 use MongoDB\Client;
 use Psr\Container\ContainerInterface;
 
 /**
  * Class ConnectionFactory
  *
- * @package YuriGobatto\Component\DoctrineMongoODM
+ * @package Helderjs\Component\DoctrineMongoODM
  */
 class ConnectionFactory extends AbstractFactory
 {

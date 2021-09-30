@@ -6,7 +6,7 @@
  * @copyright @copyright Copyright (c) 2016 Helder Santana
  * @license   https://github.com/helderjs/doctrine-mongo-odm/blob/master/LICENSE MIT License
  */
-namespace YuriGobatto\Test\Component\DoctrineMongoODM;
+namespace Helderjs\Test\Component\DoctrineMongoODM;
 
 use Doctrine\Common\Cache\Cache;
 use Doctrine\ODM\MongoDB\Configuration;
@@ -14,8 +14,8 @@ use Doctrine\ODM\MongoDB\Types\Type;
 use Doctrine\Persistence\Mapping\Driver\MappingDriver;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
-use YuriGobatto\Component\DoctrineMongoODM\ConfigurationFactory;
-use YuriGobatto\Component\DoctrineMongoODM\Exception\InvalidConfigException;
+use Helderjs\Component\DoctrineMongoODM\ConfigurationFactory;
+use Helderjs\Component\DoctrineMongoODM\Exception\InvalidConfigException;
 use Helders\Test\Component\DoctrineMongoODM\Asset\MyFilter;
 use Helders\Test\Component\DoctrineMongoODM\Asset\MyType;
 use Psr\Container\ContainerInterface;

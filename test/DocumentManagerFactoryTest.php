@@ -6,7 +6,7 @@
  * @copyright @copyright Copyright (c) 2016 Helder Santana
  * @license   https://github.com/helderjs/doctrine-mongo-odm/blob/master/LICENSE MIT License
  */
-namespace YuriGobatto\Test\Component\DoctrineMongoODM;
+namespace Helderjs\Test\Component\DoctrineMongoODM;
 
 use Doctrine\Common\EventManager;
 use MongoDB\Client;
@@ -18,8 +18,8 @@ use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 use ProxyManager\Configuration as ProxyManagerConfiguration;
 use ProxyManager\Factory\LazyLoadingGhostFactory;
-use YuriGobatto\Component\DoctrineMongoODM\DocumentManagerFactory;
-use YuriGobatto\Component\DoctrineMongoODM\Exception\InvalidConfigException;
+use Helderjs\Component\DoctrineMongoODM\DocumentManagerFactory;
+use Helderjs\Component\DoctrineMongoODM\Exception\InvalidConfigException;
 use Psr\Container\ContainerInterface;
 
 class DocumentManagerFactoryTest extends TestCase

@@ -6,14 +6,14 @@
  * @copyright @copyright Copyright (c) 2016 Helder Santana
  * @license   https://github.com/helderjs/doctrine-mongo-odm/blob/master/LICENSE MIT License
  */
-namespace YuriGobatto\Component\DoctrineMongoODM;
+namespace Helderjs\Component\DoctrineMongoODM;
 
 use Psr\Container\ContainerInterface;
 
 /**
  * Class AbstractFactory
  *
- * @package YuriGobatto\Component\DoctrineMongoODM
+ * @package Helderjs\Component\DoctrineMongoODM
  */
 abstract class AbstractFactory
 {
