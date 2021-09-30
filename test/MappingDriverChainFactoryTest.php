@@ -8,21 +8,25 @@
  */
 namespace Helderjs\Test\Component\DoctrineMongoODM;
 
-use Doctrine\Common\Persistence\Mapping\Driver\AnnotationDriver;
-use Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain;
 use Doctrine\ODM\MongoDB\Mapping\Driver\XmlDriver;
+use Doctrine\Persistence\Mapping\Driver\AnnotationDriver;
+use Doctrine\Persistence\Mapping\Driver\MappingDriverChain;
+use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Helderjs\Component\DoctrineMongoODM\Exception\InvalidConfigException;
 use Helderjs\Component\DoctrineMongoODM\MappingDriverChainFactory;
 use Psr\Container\ContainerInterface;
 
-class MappingDriverChainFactoryTest extends \PHPUnit_Framework_TestCase
+class MappingDriverChainFactoryTest extends TestCase
 {
+    use ProphecyTrait;
+
     /**
      * @var ContainerInterface
      */
     private $container;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->container = $this->prophesize(ContainerInterface::class);
     }
@@ -109,6 +113,7 @@ class MappingDriverChainFactoryTest extends \PHPUnit_Framework_TestCase
         $this->container->has('doctrine')->willReturn(false);
         $this->container->has('config')->willReturn(true);
         $this->container->get('config')->willReturn($options);
+        $this->container->get(AnnotationDriver::class)->willReturn(null);
         $this->expectException(InvalidConfigException::class);
         $factory($this->container->reveal());
     }

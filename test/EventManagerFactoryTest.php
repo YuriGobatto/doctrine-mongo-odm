@@ -9,6 +9,8 @@
 namespace Helderjs\Test\Component\DoctrineMongoODM;
 
 use Doctrine\Common\EventManager;
+use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Helderjs\Component\DoctrineMongoODM\EventManagerFactory;
 use Helderjs\Component\DoctrineMongoODM\Exception\InvalidConfigException;
 use Helderjs\Test\Component\DoctrineMongoODM\Asset\TestEventSubscriber;
@@ -16,14 +18,16 @@ use Helderjs\Test\Component\DoctrineMongoODM\Asset\TestEventSubscriber2;
 use Helderjs\Test\Component\DoctrineMongoODM\Asset\TestEventSubscriber3;
 use Psr\Container\ContainerInterface;
 
-class EventManagerFactoryTest extends \PHPUnit_Framework_TestCase
+class EventManagerFactoryTest extends TestCase
 {
+    use ProphecyTrait;
+
     /**
      * @var ContainerInterface
      */
     private $container;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->container = $this->prophesize(ContainerInterface::class);
     }

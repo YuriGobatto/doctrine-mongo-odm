@@ -8,7 +8,7 @@
  */
 namespace Helderjs\Component\DoctrineMongoODM;
 
-use Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain;
+use Doctrine\Persistence\Mapping\Driver\MappingDriverChain;
 use Helderjs\Component\DoctrineMongoODM\Exception\InvalidConfigException;
 use Psr\Container\ContainerInterface;
 
@@ -36,7 +36,15 @@ class MappingDriverChainFactory extends AbstractFactory
             $driverChain = new MappingDriverChain();
 
             foreach ($options[MappingDriverChain::class] as $namespace => $driver) {
-                $driverChain->addDriver($container->get($driver), $namespace);
+                $nestedDriver = $container->get($driver);
+                if ($nestedDriver === null) {
+                    throw new InvalidConfigException(sprintf("The %s driver is NULL", $driver));
+                }
+                $driverChain->addDriver($nestedDriver, $namespace);
+            }
+
+            if (empty($options[MappingDriverChain::class])) {
+                throw new InvalidConfigException("The Mapping Driver Chain is Empty");
             }
 
             $driverChain->setDefaultDriver(

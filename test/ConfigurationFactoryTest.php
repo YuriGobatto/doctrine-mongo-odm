@@ -9,23 +9,27 @@
 namespace Helderjs\Test\Component\DoctrineMongoODM;
 
 use Doctrine\Common\Cache\Cache;
-use Doctrine\Common\Persistence\Mapping\Driver\MappingDriver;
 use Doctrine\ODM\MongoDB\Configuration;
 use Doctrine\ODM\MongoDB\Types\Type;
+use Doctrine\Persistence\Mapping\Driver\MappingDriver;
+use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Helderjs\Component\DoctrineMongoODM\ConfigurationFactory;
 use Helderjs\Component\DoctrineMongoODM\Exception\InvalidConfigException;
 use Helders\Test\Component\DoctrineMongoODM\Asset\MyFilter;
 use Helders\Test\Component\DoctrineMongoODM\Asset\MyType;
 use Psr\Container\ContainerInterface;
 
-class ConfigurationFactoryTest extends \PHPUnit_Framework_TestCase
+class ConfigurationFactoryTest extends TestCase
 {
+    use ProphecyTrait;
+
     /**
      * @var ContainerInterface
      */
     private $container;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->container = $this->prophesize(ContainerInterface::class);
     }
@@ -116,7 +120,7 @@ class ConfigurationFactoryTest extends \PHPUnit_Framework_TestCase
                     'odm_default' => [
                         'default_db' => 'mydb',
                         'driver' => MappingDriver::class,
-                        'generate_proxies' => true,
+                        'generate_proxies' => 2,
                         'proxy_dir' => 'data/DoctrineMongoODMModule/Proxy',
                         'proxy_namespace' => 'DoctrineMongoODMModule\Proxy',
                         'generate_hydrators' => true,
@@ -152,7 +156,7 @@ class ConfigurationFactoryTest extends \PHPUnit_Framework_TestCase
                         'default_db' => 'mydb',
                         'driver' => MappingDriver::class,
                         'metadata_cache' => Cache::class,
-                        'generate_proxies' => true,
+                        'generate_proxies' => 2,
                         'proxy_dir' => 'data/DoctrineMongoODMModule/Proxy',
                         'proxy_namespace' => 'DoctrineMongoODMModule\Proxy',
                         'generate_hydrators' => true,
