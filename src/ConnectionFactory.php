@@ -23,7 +23,7 @@ class ConnectionFactory extends AbstractFactory
 {
     /**
      * @param ContainerInterface $container
-     * @return Connection
+     * @return Client
      * @throws InvalidConfigException for invalid config service values.
      */
     public function __invoke(ContainerInterface $container)
@@ -35,8 +35,7 @@ class ConnectionFactory extends AbstractFactory
                 return new Client('mongodb://127.0.0.1', []);
             }
 
-            $connectionString = isset($options['connection_string'])
-                ? $options['connection_string'] : null;
+            $connectionString = $options['connection_string'] ?? null;
             $dbName = null;
             if (empty($connectionString)) {
                 $connectionString = 'mongodb://';
@@ -63,7 +62,7 @@ class ConnectionFactory extends AbstractFactory
                 }
             }
 
-            return new Client($connectionString, $options['options']);
+            return new Client($connectionString, $options['options'], $options['driver_options']);
         } catch (\Exception $e) {
             throw new InvalidConfigException($e->getMessage());
         }
